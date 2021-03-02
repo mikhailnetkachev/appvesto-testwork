@@ -1,0 +1,51 @@
+@import "variables/index";
+
+/* layout */
+
+.wrapper {
+  $size: 16px;
+
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $size;
+  padding-left: $size;
+  max-width: $breakpointDesktop;
+}
+
+/* block model */
+
+.d-flex {
+  display: flex;
+}
+
+.fd-column {
+  flex-direction: column;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.jc-space-between {
+  justify-content: space-between;
+}
+
+.jc-flex-end {
+  justify-content: flex-end;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+/* styling */
+
+.td-line-through {
+  text-decoration: line-through;
+}
+
+/* position */
+
+.o-hidden {
+  overflow: hidden;
+}
