@@ -9,7 +9,9 @@ const loadItems = () => (dispatch) => {
   dataAPI.getProducts()
     .then((response) => {
       const items = response;
-      dispatch(actions.updateItems(items));
+      const categories = Array.from(new Set(items.map((item) => item.category)));
+
+      dispatch(actions.updateItems(items, categories));
     })
     .catch(() => {
       dispatch(actions.loadingError("Something went wrong!"));

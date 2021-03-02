@@ -4,7 +4,7 @@ const loadingError = (message) => ({ type: TYPES.LOADING_ERROR, payload: { messa
 
 const loadingItems = () => ({ type: TYPES.LOADING_ITEMS });
 
-const updateItems = (items) => ({ type: TYPES.UPDATE_ITEMS, payload: { items } })
+const updateItems = (items, categories) => ({ type: TYPES.UPDATE_ITEMS, payload: { items, categories } })
 
 const actions = {
   loadingError,
