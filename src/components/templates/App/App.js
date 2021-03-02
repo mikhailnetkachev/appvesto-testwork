@@ -1,3 +1,9 @@
-const App = () => <div>App is here</div>;
+import Layout from '../Layout';
+
+const App = () => (
+  <Layout>
+    pages is here
+  </Layout>
+);
 
 export default App;
