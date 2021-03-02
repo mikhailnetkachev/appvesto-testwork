@@ -3,6 +3,10 @@ import actions from "../actions";
 
 const dataAPI = new DataAPI();
 
+const clear = () => (dispatch) => {
+  dispatch(actions.clear());
+};
+
 const loadItems = () => (dispatch) => {
   dispatch(actions.loadingItems());
 
@@ -19,6 +23,7 @@ const loadItems = () => (dispatch) => {
 };
 
 const emitters = {
+  clear,
   loadItems,
 };
 

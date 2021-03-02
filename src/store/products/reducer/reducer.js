@@ -9,6 +9,8 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case TYPES.CLEAR:
+      return initialState;
     case TYPES.LOADING_ERROR:
       return { ...state, error: action.payload.message, loading: false };
     case TYPES.LOADING_ITEMS:
