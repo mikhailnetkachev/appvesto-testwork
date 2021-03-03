@@ -10,8 +10,7 @@ const addItem = (product) => (dispatch, getState) => {
   if (count > 0) {
     const updatedItems = items.map((item) => {
       if (item.product.id === product.id) {
-        const updatedItem = { ...item, count: item.count + 1 };
-        return updatedItem;
+        item.incrementCount();
       }
 
       return item;
@@ -42,8 +41,7 @@ const deleteItem = (id) => (dispatch, getState) => {
   if (count > 1) {
     const updatedItems = items.map((item) => {
       if (item.product.id === id) {
-        const updatedItem = { ...item, count: item.count - 1 };
-        return updatedItem;
+        item.decrementCount();
       }
 
       return item;

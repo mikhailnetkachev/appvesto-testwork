@@ -30,8 +30,6 @@ const Products = () => {
 
   return (
     <div className="wrapper">
-      <h3 className="m-0px">Products</h3>
-
       {products.items.length ? (
         <ul className={cs(classes.list, "m-0px mt-48px p-0px")}>
           {products.items.map((item) => {
