@@ -1,0 +1,22 @@
+.container {
+  position: relative;
+}
+
+.body {
+  position: absolute;
+  top: 100%;
+  right: 0;
+
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 420px;
+  min-width: 280px;
+
+  background-color: white;
+}
+
+.icon {
+  width: 16px;
+  height: auto;
+}
