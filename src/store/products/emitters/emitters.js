@@ -22,14 +22,19 @@ const loadItems = () => (dispatch) => {
 
       dispatch(actions.updateItems(items, categories));
     })
-    .catch((error = "Something went wrong!") => {
-      dispatch(actions.loadingError(error));
+    .catch((error) => {
+      dispatch(actions.loadingError(error.message));
     });
+};
+
+const selectCategory = (category) => (dispatch) => {
+  dispatch(actions.selectFilterCategory(category));
 };
 
 const emitters = {
   clear,
   loadItems,
+  selectCategory,
 };
 
 export default emitters;

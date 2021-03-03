@@ -12,10 +12,10 @@ const signIn = ({ password, username }) => (dispatch) => {
       throw new Error(`The server responded with ${response.status} error!`);
     })
     .then((data) => {
-      console.log(data);
+      console.log(data); // TODO: work in progress
     })
-    .catch((error = "Something went wrong!") => {
-      dispatch(actions.error(error));
+    .catch((error) => {
+      dispatch(actions.error(error.message));
     });
 };
 
