@@ -1,23 +1,23 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import Cart from '../Cart';
 import Layout from '../Layout';
 import Product from '../Product';
 import Products from '../Products';
-import Home from '../Home';
 
 const App = () => {
   return (
     <Router>
       <Layout>
         <Switch>
+          <Route path="/cart">
+            <Cart />
+          </Route>
           <Route path="/products/:id">
             <Product />
           </Route>
-          <Route path="/products">
-            <Products />
-          </Route>
           <Route path="/">
-            <Home />
+            <Products />
           </Route>
         </Switch>
       </Layout>

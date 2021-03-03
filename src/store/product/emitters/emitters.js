@@ -12,11 +12,16 @@ const load = ({ id }) => (dispatch) => {
 
   dataAPI.getProduct({ id })
     .then((response) => {
+      if (response.status === 200) return response.json();
+
+      throw new Error(`The server responded with ${response.status} error!`);
+    })
+    .then((response) => {
       const item = response;
       dispatch(actions.updateItem(item));
     })
-    .catch(() => {
-      dispatch(actions.loadingError("Something went wrong!"));
+    .catch((error = "Something went wrong!") => {
+      dispatch(actions.loadingError(error));
     });
 };
 

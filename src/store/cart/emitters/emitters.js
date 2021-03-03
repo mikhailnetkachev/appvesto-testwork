@@ -1,5 +1,8 @@
+import { OrderAPI } from "../../../api";
 import actions from "../actions";
 import { CartItem, getCountOfItem } from "./utilities";
+
+const orderAPI = new OrderAPI();
 
 const addItem = (product) => (dispatch, getState) => {
   const {
@@ -24,6 +27,28 @@ const addItem = (product) => (dispatch, getState) => {
   const updatedItems = [...items, item];
 
   dispatch(actions.updateItems(updatedItems));
+};
+
+const purchase = () => (dispatch, getState) => {
+  const {
+    cart: { items }
+  } = getState();
+  
+  if (!items.length) return;
+
+  const products = items.map((item) => item.product); // TODO: add to request count of product
+
+  orderAPI
+    .purchase({ products })
+    .then((response) => {
+      if (response.status === 200) return response.json();
+
+      throw new Error(`The server responded with ${response.status} error`);
+    })
+    .then(() => {
+      dispatch(actions.clear());
+    })
+    .catch((error = "Something went wrong!") => console.log(error));
 };
 
 const clearItems = () => (dispatch) => {
@@ -58,7 +83,8 @@ const deleteItem = (id) => (dispatch, getState) => {
 const emitters = {
   addItem,
   clearItems,
-  deleteItem
+  deleteItem,
+  purchase,
 };
 
 export default emitters;

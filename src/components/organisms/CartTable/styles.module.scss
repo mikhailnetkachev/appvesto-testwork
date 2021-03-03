@@ -1,0 +1,9 @@
+.container {
+  list-style-type: none;
+}
+
+.item {
+  &:nth-of-type(even) {
+    background-color: lightblue;
+  }
+}
