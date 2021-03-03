@@ -12,49 +12,48 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(productsEmitters.loadItems());
+
+    return () => dispatch(productsEmitters.clear());
   }, [dispatch]);
 
   if (products.loading) {
     return (
-      <div>Loading ...</div>
+      <div className="wrapper">Loading ...</div>
     );
   }
 
   if (products.error) {
     return (
-      <div>{products.error}</div>
+      <div className="wrapper">{products.error}</div>
     );
   }
 
   return (
-    <div className={cs(classes.container, "wrapper")}>
-      <h3 className="m-0px">Products</h3>
-      <div className="mt-48px">
-        {products.items.length ? (
-          <ul className={cs(classes.list, "m-0px p-0px")}>
-            {products.items.map((item) => {
-              const href = `/products/${item.id}`;
-              const onAdd = () => { dispatch(cartEmitters.addItem(item)); };
-    
-              return (
-                <li key={item.id} className={classes.item}>
-                  <ProductCard
-                    discount={item.discount}
-                    hasDiscount={false}
-                    href={href}
-                    image={item.img_url}
-                    name={item.name}
-                    price={item.price}
-                    onAdd={onAdd}
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <div>There are no items.</div>
-        )}
-      </div>
+    <div className="wrapper">
+      {products.items.length ? (
+        <ul className={cs(classes.list, "m-0px mt-48px p-0px")}>
+          {products.items.map((item) => {
+            const href = `/products/${item.id}`;
+            const onAdd = () => { dispatch(cartEmitters.addItem(item)); };
+  
+            return (
+              <li key={item.id} className={classes.item}>
+                <ProductCard
+                  discount={item.discount}
+                  hasDiscount={false}
+                  href={href}
+                  image={item.img_url}
+                  name={item.name}
+                  price={item.price}
+                  onAdd={onAdd}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <div>There are no items.</div>
+      )}
     </div>
   );
 };

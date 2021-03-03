@@ -4,15 +4,15 @@ const clear = () => ({ type: TYPES.CLEAR });
 
 const loadingError = (message) => ({ type: TYPES.LOADING_ERROR, payload: { message }});
 
-const loadingItems = () => ({ type: TYPES.LOADING_ITEMS });
+const loadingItem = () => ({ type: TYPES.LOADING_ITEM });
 
-const updateItems = (items, categories) => ({ type: TYPES.UPDATE_ITEMS, payload: { items, categories } })
+const updateItem = (item) => ({ type: TYPES.UPDATE_ITEM, payload: { item } })
 
 const actions = {
   clear,
   loadingError,
-  loadingItems,
-  updateItems,
+  loadingItem,
+  updateItem,
 };
 
 export default actions;

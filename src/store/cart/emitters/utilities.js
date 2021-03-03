@@ -3,6 +3,16 @@ const CartItem = class {
     this.product = product;
     this.count = count;
   }
+
+  decrementCount() {
+    if (this.count > 1) {
+      this.count -= 1;
+    } 
+  }
+
+  incrementCount() {
+    this.count += 1;
+  }
 };
 
 const getCountOfItem = (items, id) => {

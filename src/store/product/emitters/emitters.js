@@ -7,15 +7,13 @@ const clear = () => (dispatch) => {
   dispatch(actions.clear());
 };
 
-const loadItems = () => (dispatch) => {
-  dispatch(actions.loadingItems());
+const load = ({ id }) => (dispatch) => {
+  dispatch(actions.loadingItem());
 
-  dataAPI.getProducts()
+  dataAPI.getProduct({ id })
     .then((response) => {
-      const items = response;
-      const categories = Array.from(new Set(items.map((item) => item.category)));
-
-      dispatch(actions.updateItems(items, categories));
+      const item = response;
+      dispatch(actions.updateItem(item));
     })
     .catch(() => {
       dispatch(actions.loadingError("Something went wrong!"));
@@ -24,7 +22,7 @@ const loadItems = () => (dispatch) => {
 
 const emitters = {
   clear,
-  loadItems,
+  load,
 };
 
 export default emitters;
