@@ -27,9 +27,14 @@ const loadItems = () => (dispatch) => {
     });
 };
 
+const selectCategory = (category) => (dispatch) => {
+  dispatch(actions.selectFilterCategory(category));
+};
+
 const emitters = {
   clear,
   loadItems,
+  selectCategory,
 };
 
 export default emitters;
