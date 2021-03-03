@@ -5,13 +5,20 @@ const API = class {
 
   async request(
     path,
-    { body = null, method = "GET" } = {},
+    { body = null, method = "GET", token } = {},
   ) {
+    const headers = { "Content-Type": "application/json" };
+    const referrerPolicy = "origin";
+
+    if (token) headers.Authorization = `Bearer ${token}`;
+
     const response = fetch(
       `${this.url}${path}`,
       {
         body: body ? JSON.stringify(body) : null,
+        headers,
         method,
+        referrerPolicy,
       }
     );
 
