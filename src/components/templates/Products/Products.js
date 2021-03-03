@@ -19,13 +19,13 @@ const Products = () => {
 
   if (products.loading) {
     return (
-      <div className="wrapper">Loading ...</div>
+      <div className="wrapper mt-48px">Loading ...</div>
     );
   }
 
   if (products.error) {
     return (
-      <div className="wrapper">{products.error}</div>
+      <div className="wrapper mt-48px">{products.error}</div>
     );
   }
 

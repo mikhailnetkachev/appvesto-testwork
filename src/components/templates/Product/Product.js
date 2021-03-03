@@ -21,18 +21,18 @@ const Product = () => {
 
   if (product.loading) {
     return (
-      <div className="wrapper">Loading ...</div>
+      <div className="wrapper mt-48px">Loading ...</div>
     );
   }
 
   if (product.error) {
     return (
-      <div className="wrapper">{product.error}</div>
+      <div className="wrapper mt-48px">{product.error}</div>
     );
   }
 
   return (
-    <div className={cs(classes.container, "wrapper")}>
+    <div className={cs(classes.container, "wrapper mt-48px")}>
       <div className={classes.navigation}>
         <button onClick={goBack}>BACK</button>
       </div>
