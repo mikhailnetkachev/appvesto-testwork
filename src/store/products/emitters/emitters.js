@@ -22,8 +22,8 @@ const loadItems = () => (dispatch) => {
 
       dispatch(actions.updateItems(items, categories));
     })
-    .catch((error = "Something went wrong!") => {
-      dispatch(actions.loadingError(error));
+    .catch((error) => {
+      dispatch(actions.loadingError(error.message));
     });
 };
 

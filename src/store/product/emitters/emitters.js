@@ -7,7 +7,7 @@ const clear = () => (dispatch) => {
   dispatch(actions.clear());
 };
 
-const load = ({ id }) => (dispatch) => {
+const load = ({ id }) => (dispatch, getState) => {
   dispatch(actions.loadingItem());
 
   dataAPI.getProduct({ id })
@@ -20,8 +20,8 @@ const load = ({ id }) => (dispatch) => {
       const item = response;
       dispatch(actions.updateItem(item));
     })
-    .catch((error = "Something went wrong!") => {
-      dispatch(actions.loadingError(error));
+    .catch((error) => {
+      dispatch(actions.loadingError(error.message));
     });
 };
 
