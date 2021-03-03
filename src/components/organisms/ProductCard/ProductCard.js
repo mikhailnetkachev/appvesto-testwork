@@ -1,16 +1,19 @@
 import { Link } from "react-router-dom";
 import cs from "classnames";
+
+import Picture from "../../atoms/Picture";
 import classes from "./styles.module.scss";
 
 const ProductCard = ({ discount, hasDiscount, href, image, name, price, onAdd }) => {
   return (
     <div className={cs(classes.container, "d-flex fd-column")}>
-      <Link to={href} className={cs("d-flex jc-center ai-center")}>
-        <img className={classes.image} src={image} alt={name} />
-      </Link>
+      <Picture src={image} alt={name} />
       <h4 className="m-0px mt-16px h-32px o-hidden">
-        <Link to={href}>{name}</Link>
+        {name} 
       </h4>
+      <div className="mt-8px">
+        <Link to={href}>VIEW</Link>
+      </div>
       <div className="d-flex jc-space-between ai-center mt-8px">
         {hasDiscount ? (
           <>
