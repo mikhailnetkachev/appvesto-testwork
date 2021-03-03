@@ -12,19 +12,13 @@ const Product = () => {
   const onAdd = (product) => dispatch(cartEmitters.addItem(product));
   const onDelete = (id) => dispatch(cartEmitters.deleteItem(id));
 
-  if (!cart.items.length) {
-    return (
-      <div className="wrapper mt-32px">There are no items in cart.</div>
-    );
-  }
-
   return (
     <div className={cs(classes.container, "wrapper mt-32px")}>
       <div className="mt-32px">
         <CartTable items={cart.items} onAdd={onAdd} onDelete={onDelete} />
       </div>
       <div className="d-flex jc-flex-end mt-32px">
-        <button onClick={() => dispatch(cartEmitters.purchase())}>PURCHASE</button>
+        <button disabled={!cart.items.length} onClick={() => dispatch(cartEmitters.purchase())}>PURCHASE</button>
       </div>
     </div>
   );
