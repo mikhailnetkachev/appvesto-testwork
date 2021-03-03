@@ -12,13 +12,18 @@ const loadItems = () => (dispatch) => {
 
   dataAPI.getProducts()
     .then((response) => {
+      if (response.status === 200) return response.json();
+
+      throw new Error(`The server responded with ${response.status} error!`);
+    })
+    .then((response) => {
       const items = response;
       const categories = Array.from(new Set(items.map((item) => item.category)));
 
       dispatch(actions.updateItems(items, categories));
     })
-    .catch(() => {
-      dispatch(actions.loadingError("Something went wrong!"));
+    .catch((error = "Something went wrong!") => {
+      dispatch(actions.loadingError(error));
     });
 };
 
